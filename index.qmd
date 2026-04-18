@@ -2,7 +2,7 @@
 title: "Test Quarto Website"
 ---
 
-This is a Quarto website.
+This is a Quarto website used as a test site for creating documentation for workflows.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
