@@ -167,6 +167,14 @@ git remote set-url origin github.com/<USERNAME>/<REPOSITORY_NAME>.git
 
 However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.
 
+But we need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. You will need to install the `dotenv` package before running this code.
+
+```{r}
+library(dotenv)
+load_dot_env()
+github_token <- Sys.getenv("GITHUB_TOKEN")
+```
+
 ```         
 Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
 Click Generate new token (classic)
