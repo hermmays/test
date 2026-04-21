@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Test Quarto Website",
     "section": "",
-    "text": "This is a Quarto website used as a test site for creating documentation for workflows.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a test site for creating documentation for workflows using Quarto. We will perform sample analyses on test data to illustrate some features of the documentation. The tutorial will assume some basic familiarity with statistical analysis and graphics in R and will focus primarily on documenting a workflow.\nWhat follows is a protocol for setting up a new analysis for genetic datasets, including single nucleotide polymorphism (SNP) data and individual locus Sanger sequenced data, and other accompanying spatial and phenotypic data. This follows best practices for documentation and is based on prior documented workflows.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\n\nCreate a GitHub repository.\nCreate a new R project and Quarto website within R studio.\nCreate an R environment.\nEdit the Quarto website settings to create pages documenting your workflows\nInclude narrative, textual information and interactive code.\nUpload to GitHub repository."
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,75 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#outline",
+    "href": "index.html#outline",
+    "title": "Test Quarto Website",
+    "section": "",
+    "text": "Create a GitHub repository.\nCreate a new R project and Quarto website within R studio.\nCreate an R environment.\nEdit the Quarto website settings to create pages documenting your workflows\nInclude narrative, textual information and interactive code.\nUpload to GitHub repository."
+  },
+  {
+    "objectID": "index.html#create-a-github-account",
+    "href": "index.html#create-a-github-account",
+    "title": "Test Quarto Website",
+    "section": "Create a GitHub account",
+    "text": "Create a GitHub account\nGo to https://github.com and create an account.\nYou should now have a dashboard with your user name and various options for customizing your GitHub dashboard, including options for creating a profile image, and links to various settings including options for creating new repositories."
+  },
+  {
+    "objectID": "index.html#create-a-github-repository-1",
+    "href": "index.html#create-a-github-repository-1",
+    "title": "Test Quarto Website",
+    "section": "Create a GitHub repository",
+    "text": "Create a GitHub repository\nSelect Repositories from the top menu. This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.\nSelect the New button to create a new repository.\nEnter an informative name in the Repository name * field along with a brief description of the repository in the Description field.\nChoose Public from the dropdown menu for the Choose visibility * option under Configuration.\nClick the toggle to On in the Add README option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the Description field.\nLeave the Add .gitignore and Add license field to the default settings.\nClick the Create repository button."
+  },
+  {
+    "objectID": "index.html#edit-the-readme.md-file",
+    "href": "index.html#edit-the-readme.md-file",
+    "title": "Test Quarto Website",
+    "section": "Edit the README.md file",
+    "text": "Edit the README.md file\nYou will now see the dashboard for your repository. All that will be in the repository for now is the README.md file. You may edit the contents of README.md in GitHub by clicking on it and clicking the Edit button. After you are finished editing the README.md file click Commit changes.... You can enter some brief description of the change if you like. Make sure the Commit directly to main branch option is selected and click Commit change. This will return you back to the main dashboard for the repository."
+  },
+  {
+    "objectID": "index.html#edit-the-repository-settings",
+    "href": "index.html#edit-the-repository-settings",
+    "title": "Test Quarto Website",
+    "section": "Edit the repository settings",
+    "text": "Edit the repository settings\nSelect Settings from the menu bar across the top of the page. The repository name should appear in the top field. Do not rename the repository. Also the Default branch field should read main.\nOn the left menu select Pages to set up your html webpage for this repository. This will take you to the settings for GitHub Pages. The Source option should read Deploy from a branch and for the Branch option select main from the dropdown menu and /docs. Click the Save button.\nYou now have a working GitHub directory and you are ready to deploy your workflow documentation and analyses. Continue to the next stage."
+  },
+  {
+    "objectID": "index.html#create-a-written-narrative",
+    "href": "index.html#create-a-written-narrative",
+    "title": "Test Quarto Website",
+    "section": "Create a written narrative",
+    "text": "Create a written narrative\nThis is the fun part. Be creative in generating the narrative of the workflow but most importantly be detailed in your instructions. The goal is that a reader should be able to follow your instructions and replicate your results exactly. There will be people with varying skill sets and experience reading your documentation, including sometimes students with very little background in computing or using a primarily command line interface."
+  },
+  {
+    "objectID": "index.html#render-your-results",
+    "href": "index.html#render-your-results",
+    "title": "Test Quarto Website",
+    "section": "Render your results",
+    "text": "Render your results\nSave results once a file has been updated by clicking on the save icon in the source pane menu, it appears as a computer disc icon.\nOnce your edits are completed then render the page by clicking on the Render selection in the source pane menu. Depending on the complexity of your page and the amount of code needed to run this can take a little while. Rendering will create a copy of your webpage in html format stored in the docs folder."
+  },
+  {
+    "objectID": "index.html#configure-your-github-repository",
+    "href": "index.html#configure-your-github-repository",
+    "title": "Test Quarto Website",
+    "section": "Configure your GitHub repository",
+    "text": "Configure your GitHub repository\nWhen you are ready to upload your changes to your GitHub website go to your terminal by selecting the Terminal tab in the lower left pane in RStudio.\nMake certain that the name of the default branch is main in your GitHub Pages settings (see [Create a GItHub repository]).\ngit config --global init.defaultBranch main\nVerify that you are in the correct directory and check the status of your repository.\ngit status"
+  },
+  {
+    "objectID": "index.html#add-files-to-the-github-repository",
+    "href": "index.html#add-files-to-the-github-repository",
+    "title": "Test Quarto Website",
+    "section": "Add files to the GitHub repository",
+    "text": "Add files to the GitHub repository\nTo add new files or other changes the files need to be staged. Remember to add the period at the end of this command as that indicates changes are being added to the current directory.\ngit add .\nAdd your user email and GitHub username.\ngit config --global user.email \"youremail@gmail.com\"\ngit config --global user.name \"yourusername\"\nCommit the staged changes and include a brief descriptive message. The first commit of data you may just call Initial commit. I sometimes use the date and time for descriptions of subsequent commits.\ngit commit -m \"Initial commit\"\nAfter this commit you should see a list of files that were updated.\nNow set up a remote repository. First check if there is a remote repository set up.\ngit remote -v\nIf there is no output from this command then you need to set up the remote repository."
+  },
+  {
+    "objectID": "index.html#authenticate-your-github-remote-repository",
+    "href": "index.html#authenticate-your-github-remote-repository",
+    "title": "Test Quarto Website",
+    "section": "Authenticate your GitHub remote repository",
+    "text": "Authenticate your GitHub remote repository\nOnce the files have been staged and commited you need to tell the program where to send your files. If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see &lt;USERNAME&gt; replace with your GitHub username and where you see &lt;REPOSITORY_NAME&gt; replace with the name you gave your GitHub repository.\ngit remote set-url origin github.com/&lt;USERNAME&gt;/&lt;REPOSITORY_NAME&gt;.git\nHowever, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.\nGo to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)\nClick Generate new token (classic)\nGive it a name (e.g., \"Git CLI\")\nSelect these scopes:\n    repo (full control of private repositories)\n    workflow (if you use GitHub Actions)\nClick Generate token\nCopy the token immediately. You won't be able to see it again. The token will be a very long series of random characters like this. \n\n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\nUpdate Your Remote URL with the Token\ngit remote set-url origin https://&lt;YOUR_USERNAME:&lt;YOUR_TOKEN&gt;@github.com/&lt;YOUR_USERNAME&gt;/&lt;REPOSITY_NNAME&gt;.git\nNow you are ready to push your files to your GitHub repository’s webpage. You should be on the ‘main’ branch in GitHub so use the following command.\ngit push origin main\nIf there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.\n\n1 + 1\n\n[1] 2"
   }
 ]

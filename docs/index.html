@@ -141,8 +141,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
+  </ul></li>
+  <li><a href="#create-a-github-repository" id="toc-create-a-github-repository" class="nav-link" data-scroll-target="#create-a-github-repository">Create a GitHub repository</a>
+  <ul class="collapse">
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account">Create a GitHub account</a></li>
+  <li><a href="#create-a-github-repository-1" id="toc-create-a-github-repository-1" class="nav-link" data-scroll-target="#create-a-github-repository-1">Create a GitHub repository</a></li>
+  <li><a href="#edit-the-readme.md-file" id="toc-edit-the-readme.md-file" class="nav-link" data-scroll-target="#edit-the-readme.md-file">Edit the README.md file</a></li>
+  <li><a href="#edit-the-repository-settings" id="toc-edit-the-repository-settings" class="nav-link" data-scroll-target="#edit-the-repository-settings">Edit the repository settings</a></li>
+  </ul></li>
+  <li><a href="#create-a-new-r-project-and-quarto-website-within-r-studio" id="toc-create-a-new-r-project-and-quarto-website-within-r-studio" class="nav-link" data-scroll-target="#create-a-new-r-project-and-quarto-website-within-r-studio">Create a new R project and Quarto website within R studio</a></li>
+  <li><a href="#create-an-r-environment" id="toc-create-an-r-environment" class="nav-link" data-scroll-target="#create-an-r-environment">Create an R environment</a></li>
+  <li><a href="#edit-the-quarto-website-settings-to-create-pages-documenting-your-workflows" id="toc-edit-the-quarto-website-settings-to-create-pages-documenting-your-workflows" class="nav-link" data-scroll-target="#edit-the-quarto-website-settings-to-create-pages-documenting-your-workflows">Edit the Quarto website settings to create pages documenting your workflows</a></li>
+  <li><a href="#include-narrative-textual-information-and-interactive-code" id="toc-include-narrative-textual-information-and-interactive-code" class="nav-link" data-scroll-target="#include-narrative-textual-information-and-interactive-code">Include narrative, textual information, and interactive code</a>
+  <ul class="collapse">
+  <li><a href="#create-a-written-narrative" id="toc-create-a-written-narrative" class="nav-link" data-scroll-target="#create-a-written-narrative">Create a written narrative</a></li>
+  <li><a href="#render-your-results" id="toc-render-your-results" class="nav-link" data-scroll-target="#render-your-results">Render your results</a></li>
+  </ul></li>
+  <li><a href="#upload-to-github-repository" id="toc-upload-to-github-repository" class="nav-link" data-scroll-target="#upload-to-github-repository">Upload to GitHub repository</a>
+  <ul class="collapse">
+  <li><a href="#configure-your-github-repository" id="toc-configure-your-github-repository" class="nav-link" data-scroll-target="#configure-your-github-repository">Configure your GitHub repository</a></li>
+  <li><a href="#add-files-to-the-github-repository" id="toc-add-files-to-the-github-repository" class="nav-link" data-scroll-target="#add-files-to-the-github-repository">Add files to the GitHub repository</a></li>
+  <li><a href="#authenticate-your-github-remote-repository" id="toc-authenticate-your-github-remote-repository" class="nav-link" data-scroll-target="#authenticate-your-github-remote-repository">Authenticate your GitHub remote repository</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -166,16 +196,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a Quarto website used as a test site for creating documentation for workflows.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This is a test site for creating documentation for workflows using Quarto. We will perform sample analyses on test data to illustrate some features of the documentation. The tutorial will assume some basic familiarity with statistical analysis and graphics in R and will focus primarily on documenting a workflow.</p>
+<p>What follows is a protocol for setting up a new analysis for genetic datasets, including single nucleotide polymorphism (SNP) data and individual locus Sanger sequenced data, and other accompanying spatial and phenotypic data. This follows best practices for documentation and is based on prior documented workflows.</p>
 <p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li><p>Create a GitHub repository.</p></li>
+<li><p>Create a new R project and Quarto website within R studio.</p></li>
+<li><p>Create an R environment.</p></li>
+<li><p>Edit the Quarto website settings to create pages documenting your workflows</p></li>
+<li><p>Include narrative, textual information and interactive code.</p></li>
+<li><p>Upload to GitHub repository.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-github-repository" class="level1">
+<h1>Create a GitHub repository</h1>
+<section id="create-a-github-account" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-github-account">Create a GitHub account</h2>
+<p>Go to <a href="https://github.com" class="uri">https://github.com</a> and create an account.</p>
+<p>You should now have a dashboard with your user name and various options for customizing your GitHub dashboard, including options for creating a profile image, and links to various settings including options for creating new repositories.</p>
+</section>
+<section id="create-a-github-repository-1" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-github-repository-1">Create a GitHub repository</h2>
+<p>Select <code>Repositories</code> from the top menu. This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.</p>
+<p>Select the <code>New</code> button to create a new repository.</p>
+<p>Enter an informative name in the <code>Repository name *</code> field along with a brief description of the repository in the <code>Description</code> field.</p>
+<p>Choose <code>Public</code> from the dropdown menu for the <code>Choose visibility *</code> option under <code>Configuration</code>.</p>
+<p>Click the toggle to <code>On</code> in the <code>Add README</code> option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the <code>Description</code> field.</p>
+<p>Leave the <code>Add .gitignore</code> and <code>Add license</code> field to the default settings.</p>
+<p>Click the <code>Create repository</code> button.</p>
+</section>
+<section id="edit-the-readme.md-file" class="level2">
+<h2 class="anchored" data-anchor-id="edit-the-readme.md-file">Edit the README.md file</h2>
+<p>You will now see the dashboard for your repository. All that will be in the repository for now is the <code>README.md</code> file. You may edit the contents of <code>README.md</code> in GitHub by clicking on it and clicking the <code>Edit</code> button. After you are finished editing the <code>README.md</code> file click <code>Commit changes....</code> You can enter some brief description of the change if you like. Make sure the <code>Commit directly to main branch</code> option is selected and click <code>Commit change</code>. This will return you back to the main dashboard for the repository.</p>
+</section>
+<section id="edit-the-repository-settings" class="level2">
+<h2 class="anchored" data-anchor-id="edit-the-repository-settings">Edit the repository settings</h2>
+<p>Select <code>Settings</code> from the menu bar across the top of the page. The repository name should appear in the top field. Do not rename the repository. Also the <code>Default branch</code> field should read <code>main</code>.</p>
+<p>On the left menu select <code>Pages</code> to set up your html webpage for this repository. This will take you to the settings for GitHub Pages. The <code>Source</code> option should read <code>Deploy from a branch</code> and for the <code>Branch</code> option select <code>main</code> from the dropdown menu and <code>/docs</code>. Click the <code>Save</code> button.</p>
+<p>You now have a working GitHub directory and you are ready to deploy your workflow documentation and analyses. Continue to the next stage.</p>
+</section>
+</section>
+<section id="create-a-new-r-project-and-quarto-website-within-r-studio" class="level1">
+<h1>Create a new R project and Quarto website within R studio</h1>
+<p>You should have R, RStudio, and Quarto installed on your computer.</p>
+<p>Create a directory for your project on your computer.</p>
+<p>Open RStudio and go to the <code>File</code> menu and select <code>New Project</code>. This will take you to the <code>New Project Wizard</code> in RStudio. Select <code>New Directory</code>.</p>
+<p>After choosing <code>New Directory</code> you will see a list of project types. Select <code>Quarto Website</code>.</p>
+<p>Click the <code>Browse</code> button and navigate to the directory you created specifically for this project. Name the project directory. Select the check boxes for the <code>Create a git repository</code>, <code>Use renv with this project</code>, and <code>Use visual markdown editor</code>.</p>
+<p>Now click on the <code>Create Project</code> button.</p>
+</section>
+<section id="create-an-r-environment" class="level1">
+<h1>Create an R environment</h1>
+<p>Working with an environment is a useful means to maintain consistency within an analysis such that the same package versions are used across sessions. If you selected the <code>Use renv with this project</code> when you initially set up the project in RStudio, congratulations, you do not have to do anything else. Your project will be running in its own dedicated environment. Remember that you will need to install packages into the research environments for each project you are working on as they will be stored in project-specific libraries. If you get a message during the creation of your project to install the <code>renv</code> package then add that package by following the prompts.</p>
+</section>
+<section id="edit-the-quarto-website-settings-to-create-pages-documenting-your-workflows" class="level1">
+<h1>Edit the Quarto website settings to create pages documenting your workflows</h1>
+<p>You should now see your RStudio project. Open all the panes by clicking on <code>View</code>, then <code>Panes</code>, and <code>Show All Panes</code> if all the working panes are not visible. The source pane should be in the upper left quadrant of your screen. This is where you will enter text, images, and code to create your document. For editing your documents in the source pane you should choose the <code>Visual</code> editor option in the menu at the top of the source pane.</p>
+<p>There are a number of other options here for editing text including bold (<strong><code>B</code></strong>), italics (<em><code>I</code></em>), and code (<code>&lt;/&gt;</code>) selections for text. There is also a drop down menu beginning with <code>Normal</code> where you may select from either normal font for text or from a number of headings, which will create an outline of the document in the column on the right side of the source pane based on the headings. After this there are options for creating lists, inserting links and images, formatting text, and dropdowns for inserting code blocks, tables, citations, and other information. The menu bar above these options has choices for saving the file (a disc icon), rendering files to html documents, and running code blocks.</p>
+<p>The source pane will initially will contain only two tabs corresponding to the two files created with the Quarto webpage. These will be titled <code>index.qmd</code> and <code>_quarto.yml</code>. Adding additional <code>qmd</code> files will ad additional pages to the webpage and additional tabs in the source pane.</p>
+<p>Select the <code>_quarto.yml</code> file and in the project information, under <code>type: website</code>, type the following.</p>
+<pre><code>output-dir: docs</code></pre>
+<p>Be sure to click the <code>Save</code> icon on the file tab after making changes.</p>
+<p>This will create a <code>docs</code> folder with the rendered files created by Quarto which will be uploaded to the GitHub repository.</p>
+</section>
+<section id="include-narrative-textual-information-and-interactive-code" class="level1">
+<h1>Include narrative, textual information, and interactive code</h1>
+<section id="create-a-written-narrative" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-written-narrative">Create a written narrative</h2>
+<p>This is the fun part. Be creative in generating the narrative of the workflow but most importantly be detailed in your instructions. The goal is that a reader should be able to follow your instructions and replicate your results exactly. There will be people with varying skill sets and experience reading your documentation, including sometimes students with very little background in computing or using a primarily command line interface.</p>
+</section>
+<section id="render-your-results" class="level2">
+<h2 class="anchored" data-anchor-id="render-your-results">Render your results</h2>
+<p>Save results once a file has been updated by clicking on the <code>save</code> icon in the source pane menu, it appears as a computer disc icon.</p>
+<p>Once your edits are completed then render the page by clicking on the <code>Render</code> selection in the source pane menu. Depending on the complexity of your page and the amount of code needed to run this can take a little while. Rendering will create a copy of your webpage in html format stored in the <code>docs</code> folder.</p>
+</section>
+</section>
+<section id="upload-to-github-repository" class="level1">
+<h1>Upload to GitHub repository</h1>
+<section id="configure-your-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="configure-your-github-repository">Configure your GitHub repository</h2>
+<p>When you are ready to upload your changes to your GitHub website go to your terminal by selecting the <code>Terminal</code> tab in the lower left pane in RStudio.</p>
+<p>Make certain that the name of the default branch is <code>main</code> in your GitHub <code>Pages</code> settings (see [<strong>Create a GItHub repository</strong>]).</p>
+<pre><code>git config --global init.defaultBranch main</code></pre>
+<p>Verify that you are in the correct directory and check the status of your repository.</p>
+<pre><code>git status</code></pre>
+</section>
+<section id="add-files-to-the-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="add-files-to-the-github-repository">Add files to the GitHub repository</h2>
+<p>To add new files or other changes the files need to be staged. Remember to add the period at the end of this command as that indicates changes are being added to the current directory.</p>
+<pre><code>git add .</code></pre>
+<p>Add your user email and GitHub username.</p>
+<pre><code>git config --global user.email "youremail@gmail.com"
+git config --global user.name "yourusername"</code></pre>
+<p>Commit the staged changes and include a brief descriptive message. The first commit of data you may just call <code>Initial commit</code>. I sometimes use the date and time for descriptions of subsequent commits.</p>
+<pre><code>git commit -m "Initial commit"</code></pre>
+<p>After this commit you should see a list of files that were updated.</p>
+<p>Now set up a remote repository. First check if there is a remote repository set up.</p>
+<pre><code>git remote -v</code></pre>
+<p>If there is no output from this command then you need to set up the remote repository.</p>
+</section>
+<section id="authenticate-your-github-remote-repository" class="level2">
+<h2 class="anchored" data-anchor-id="authenticate-your-github-remote-repository">Authenticate your GitHub remote repository</h2>
+<p>Once the files have been staged and commited you need to tell the program where to send your files. If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see <code>&lt;USERNAME&gt;</code> replace with your GitHub username and where you see <code>&lt;REPOSITORY_NAME&gt;</code> replace with the name you gave your GitHub repository.</p>
+<pre><code>git remote set-url origin github.com/&lt;USERNAME&gt;/&lt;REPOSITORY_NAME&gt;.git</code></pre>
+<p>However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.</p>
+<pre><code>Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+Click Generate new token (classic)
+Give it a name (e.g., "Git CLI")
+Select these scopes:
+    repo (full control of private repositories)
+    workflow (if you use GitHub Actions)
+Click Generate token
+Copy the token immediately. You won't be able to see it again. The token will be a very long series of random characters like this. 
+
+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</code></pre>
+<p>Update Your Remote URL with the Token</p>
+<pre><code>git remote set-url origin https://&lt;YOUR_USERNAME:&lt;YOUR_TOKEN&gt;@github.com/&lt;YOUR_USERNAME&gt;/&lt;REPOSITY_NNAME&gt;.git</code></pre>
+<p>Now you are ready to push your files to your GitHub repository’s webpage. You should be on the ‘main’ branch in GitHub so use the following command.</p>
+<pre><code>git push origin main</code></pre>
+<p>If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

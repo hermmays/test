@@ -2,9 +2,197 @@
 title: "Test Quarto Website"
 ---
 
-This is a Quarto website used as a test site for creating documentation for workflows.
+# Introduction
+
+This is a test site for creating documentation for workflows using Quarto. We will perform sample analyses on test data to illustrate some features of the documentation. The tutorial will assume some basic familiarity with statistical analysis and graphics in R and will focus primarily on documenting a workflow.
+
+What follows is a protocol for setting up a new analysis for genetic datasets, including single nucleotide polymorphism (SNP) data and individual locus Sanger sequenced data, and other accompanying spatial and phenotypic data. This follows best practices for documentation and is based on prior documented workflows.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+## Outline
+
+-   Create a GitHub repository.
+
+-   Create a new R project and Quarto website within R studio.
+
+-   Create an R environment.
+
+-   Edit the Quarto website settings to create pages documenting your workflows
+
+-   Include narrative, textual information and interactive code.
+
+-   Upload to GitHub repository.
+
+# Create a GitHub repository
+
+## Create a GitHub account
+
+Go to <https://github.com> and create an account.
+
+You should now have a dashboard with your user name and various options for customizing your GitHub dashboard, including options for creating a profile image, and links to various settings including options for creating new repositories.
+
+## Create a GitHub repository
+
+Select `Repositories` from the top menu. This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.
+
+Select the `New` button to create a new repository.
+
+Enter an informative name in the `Repository name *` field along with a brief description of the repository in the `Description` field.
+
+Choose `Public` from the dropdown menu for the `Choose visibility *` option under `Configuration`.
+
+Click the toggle to `On` in the `Add README` option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the `Description` field.
+
+Leave the `Add .gitignore` and `Add license` field to the default settings.
+
+Click the `Create repository` button.
+
+## Edit the README.md file
+
+You will now see the dashboard for your repository. All that will be in the repository for now is the `README.md` file. You may edit the contents of `README.md` in GitHub by clicking on it and clicking the `Edit` button. After you are finished editing the `README.md` file click `Commit changes....` You can enter some brief description of the change if you like. Make sure the `Commit directly to main branch` option is selected and click `Commit change`. This will return you back to the main dashboard for the repository.
+
+## Edit the repository settings
+
+Select `Settings` from the menu bar across the top of the page. The repository name should appear in the top field. Do not rename the repository. Also the `Default branch` field should read `main`.
+
+On the left menu select `Pages` to set up your html webpage for this repository. This will take you to the settings for GitHub Pages. The `Source` option should read `Deploy from a branch` and for the `Branch` option select `main` from the dropdown menu and `/docs`. Click the `Save` button.
+
+You now have a working GitHub directory and you are ready to deploy your workflow documentation and analyses. Continue to the next stage.
+
+# Create a new R project and Quarto website within R studio
+
+You should have R, RStudio, and Quarto installed on your computer.
+
+Create a directory for your project on your computer.
+
+Open RStudio and go to the `File` menu and select `New Project`. This will take you to the `New Project Wizard` in RStudio. Select `New Directory`.
+
+After choosing `New Directory` you will see a list of project types. Select `Quarto Website`.
+
+Click the `Browse` button and navigate to the directory you created specifically for this project. Name the project directory. Select the check boxes for the `Create a git repository`, `Use renv with this project`, and `Use visual markdown editor`.
+
+Now click on the `Create Project` button.
+
+# Create an R environment
+
+Working with an environment is a useful means to maintain consistency within an analysis such that the same package versions are used across sessions. If you selected the `Use renv with this project` when you initially set up the project in RStudio, congratulations, you do not have to do anything else. Your project will be running in its own dedicated environment. Remember that you will need to install packages into the research environments for each project you are working on as they will be stored in project-specific libraries. If you get a message during the creation of your project to install the `renv` package then add that package by following the prompts.
+
+# Edit the Quarto website settings to create pages documenting your workflows
+
+You should now see your RStudio project. Open all the panes by clicking on `View`, then `Panes`, and `Show All Panes` if all the working panes are not visible. The source pane should be in the upper left quadrant of your screen. This is where you will enter text, images, and code to create your document. For editing your documents in the source pane you should choose the `Visual` editor option in the menu at the top of the source pane.
+
+There are a number of other options here for editing text including bold (**`B`**), italics (*`I`*), and code (`</>`) selections for text. There is also a drop down menu beginning with `Normal` where you may select from either normal font for text or from a number of headings, which will create an outline of the document in the column on the right side of the source pane based on the headings. After this there are options for creating lists, inserting links and images, formatting text, and dropdowns for inserting code blocks, tables, citations, and other information. The menu bar above these options has choices for saving the file (a disc icon), rendering files to html documents, and running code blocks.
+
+The source pane will initially will contain only two tabs corresponding to the two files created with the Quarto webpage. These will be titled `index.qmd` and `_quarto.yml`. Adding additional `qmd` files will ad additional pages to the webpage and additional tabs in the source pane.
+
+Select the `_quarto.yml` file and in the project information, under `type: website`, type the following.
+
+```         
+output-dir: docs
+```
+
+Be sure to click the `Save` icon on the file tab after making changes.
+
+This will create a `docs` folder with the rendered files created by Quarto which will be uploaded to the GitHub repository.
+
+# Include narrative, textual information, and interactive code
+
+## Create a written narrative
+
+This is the fun part. Be creative in generating the narrative of the workflow but most importantly be detailed in your instructions. The goal is that a reader should be able to follow your instructions and replicate your results exactly. There will be people with varying skill sets and experience reading your documentation, including sometimes students with very little background in computing or using a primarily command line interface.
+
+## Render your results
+
+Save results once a file has been updated by clicking on the `save` icon in the source pane menu, it appears as a computer disc icon.
+
+Once your edits are completed then render the page by clicking on the `Render` selection in the source pane menu. Depending on the complexity of your page and the amount of code needed to run this can take a little while. Rendering will create a copy of your webpage in html format stored in the `docs` folder.
+
+# Upload to GitHub repository
+
+## Configure your GitHub repository
+
+When you are ready to upload your changes to your GitHub website go to your terminal by selecting the `Terminal` tab in the lower left pane in RStudio.
+
+Make certain that the name of the default branch is `main` in your GitHub `Pages` settings (see \[**Create a GItHub repository**\]).
+
+```         
+git config --global init.defaultBranch main
+```
+
+Verify that you are in the correct directory and check the status of your repository.
+
+```         
+git status
+```
+
+## Add files to the GitHub repository
+
+To add new files or other changes the files need to be staged. Remember to add the period at the end of this command as that indicates changes are being added to the current directory.
+
+```         
+git add .
+```
+
+Add your user email and GitHub username.
+
+```         
+git config --global user.email "youremail@gmail.com"
+git config --global user.name "yourusername"
+```
+
+Commit the staged changes and include a brief descriptive message. The first commit of data you may just call `Initial commit`. I sometimes use the date and time for descriptions of subsequent commits.
+
+```         
+git commit -m "Initial commit"
+```
+
+After this commit you should see a list of files that were updated.
+
+Now set up a remote repository. First check if there is a remote repository set up.
+
+```         
+git remote -v
+```
+
+If there is no output from this command then you need to set up the remote repository.
+
+## Authenticate your GitHub remote repository
+
+Once the files have been staged and commited you need to tell the program where to send your files. If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see `<USERNAME>` replace with your GitHub username and where you see `<REPOSITORY_NAME>` replace with the name you gave your GitHub repository.
+
+```         
+git remote set-url origin github.com/<USERNAME>/<REPOSITORY_NAME>.git
+```
+
+However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.
+
+```         
+Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+Click Generate new token (classic)
+Give it a name (e.g., "Git CLI")
+Select these scopes:
+    repo (full control of private repositories)
+    workflow (if you use GitHub Actions)
+Click Generate token
+Copy the token immediately. You won't be able to see it again. The token will be a very long series of random characters like this. 
+
+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
+```
+
+Update Your Remote URL with the Token
+
+```         
+git remote set-url origin https://<YOUR_USERNAME:<YOUR_TOKEN>@github.com/<YOUR_USERNAME>/<REPOSITY_NNAME>.git
+```
+
+Now you are ready to push your files to your GitHub repository's webpage. You should be on the 'main' branch in GitHub so use the following command.
+
+```         
+git push origin main
+```
+
+If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.
 
 ```{r}
 1 + 1
