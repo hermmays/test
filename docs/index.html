@@ -305,11 +305,13 @@ git config --global user.name "yourusername"</code></pre>
 <p>Once the files have been staged and commited you need to tell the program where to send your files. If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see <code>&lt;USERNAME&gt;</code> replace with your GitHub username and where you see <code>&lt;REPOSITORY_NAME&gt;</code> replace with the name you gave your GitHub repository.</p>
 <pre><code>git remote set-url origin github.com/&lt;USERNAME&gt;/&lt;REPOSITORY_NAME&gt;.git</code></pre>
 <p>However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.</p>
-<p>But we need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. You will need to install the <code>dotenv</code> package before running this code.</p>
+<p>First, there needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing &lt;YOURTOKEN&gt; with the token created on the GitHub site.</p>
+<pre><code>GITHUB_TOKEN=&lt;YOURTOKEN&gt;</code></pre>
+<p>Install the <code>dotenv</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotenv)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load_dot_env</span>()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>github_token <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"GITHUB_TOKEN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotenv)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load_dot_env</span>()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>github_token <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"GITHUB_TOKEN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
 Click Generate new token (classic)
@@ -327,7 +329,7 @@ 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</code></pre>
 <pre><code>git push origin main</code></pre>
 <p>If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
