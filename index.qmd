@@ -4,9 +4,7 @@ title: "Test Quarto Website"
 
 # Introduction
 
-This is a test site for creating documentation for workflows using Quarto. We will perform sample analyses on test data to illustrate some features of the documentation. The tutorial will assume some basic familiarity with statistical analysis and graphics in R and will focus primarily on documenting a workflow.
-
-What follows is a protocol for setting up a new analysis for genetic datasets, including single nucleotide polymorphism (SNP) data and individual locus Sanger sequenced data, and other accompanying spatial and phenotypic data. This follows best practices for documentation and is based on prior documented workflows.
+This is a tutorial for documenting research workflows using Quarto and RStudio. These protocols were developed in the context of systematic, biogeographic, and species delimitation studies using both morphometric and genetic data sets, but they could be employed for any research program, especially those that incorporate statistical analyses in R. We will perform a couple of analyses to illustrate some features of the documentation but this is not a tutorial on statistical analysis, rather it is an attempt to impart skills to document and share detailed workflows. The tutorial will assume some basic familiarity with statistical analysis and graphics in R.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
@@ -34,7 +32,7 @@ You should now have a dashboard with your user name and various options for cust
 
 ## Create a GitHub repository
 
-Select `Repositories` from the top menu. This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.
+Select `Repositories` from the top menu on your dashboard on [github.com](https://github.com). This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.
 
 Select the `New` button to create a new repository.
 
@@ -62,7 +60,7 @@ You now have a working GitHub directory and you are ready to deploy your workflo
 
 # Create a new R project and Quarto website within R studio
 
-You should have R, RStudio, and Quarto installed on your computer.
+You should have [R](https://www.r-project.org/), [RStudio](https://posit.co/download/rstudio-desktop), and [Quarto](https://quarto.org/) installed on your computer. You can conveniently install both the latest version of R and RStudio from the [RStudio website](https://posit.co/download/rstudio-desktop).
 
 Create a directory for your project on your computer.
 
@@ -78,7 +76,7 @@ Now click on the `Create Project` button.
 
 Working with an environment is a useful means to maintain consistency within an analysis such that the same package versions are used across sessions. If you selected the `Use renv with this project` when you initially set up the project in RStudio, congratulations, you do not have to do anything else. Your project will be running in its own dedicated environment. Remember that you will need to install packages into the research environments for each project you are working on as they will be stored in project-specific libraries. If you get a message during the creation of your project to install the `renv` package then add that package by following the prompts.
 
-# Edit the Quarto website settings to create pages documenting your workflows
+# Edit the Quarto website settings
 
 You should now see your RStudio project. Open all the panes by clicking on `View`, then `Panes`, and `Show All Panes` if all the working panes are not visible. The source pane should be in the upper left quadrant of your screen. This is where you will enter text, images, and code to create your document. For editing your documents in the source pane you should choose the `Visual` editor option in the menu at the top of the source pane.
 
@@ -104,11 +102,67 @@ This is the fun part. Be creative in generating the narrative of the workflow bu
 
 ## Render your results
 
-Save results once a file has been updated by clicking on the `save` icon in the source pane menu, it appears as a computer disc icon.
+Save results once a file has been updated by clicking on the save icon in the source pane menu, it appears as a computer disc icon.
 
 Once your edits are completed then render the page by clicking on the `Render` selection in the source pane menu. Depending on the complexity of your page and the amount of code needed to run this can take a little while. Rendering will create a copy of your webpage in html format stored in the `docs` folder.
 
 # Upload to GitHub repository
+
+## Authenticate your GitHub remote repository
+
+You need to specify where your files will be sent. Check to determine if there is a remote repository site set up by entering this command in the terminal.
+
+```         
+git remote -v
+```
+
+If there is no output from this command then you need to set up the remote repository.
+
+If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see `<USERNAME>` replace with your GitHub username and where you see `<REPOSITORY_NAME>` replace with the name you gave your GitHub repository.
+
+``` bash
+git remote set-url origin github.com/<USERNAME>/<REPOSITORY_NAME>.git
+```
+
+However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.
+
+Go to your dashboard for your GitHub account. Go to the `user navigation window` by clicking on your user icon in the top right corner. Select `Settings` from that menu. A list of menu options should be listed on the left side of your window. Scroll down and select the `< > Developer` settings option. Click on `Personal access tokens` on the left, from the drop down select `Tokens (classic)` and click the `Generate new token` button and from that drop down select `Generate new token (classic)`. You should now be on a new page that provides options for choosing the settings for the access token. Give your access token a name and from the token options select the `repo` and `workflow` check boxes. Now click on `Generate token`.
+
+You have now created a security access token that may be used to upload changes to your GitHub site. The token is a long series of random characters like this (don't worry, this isn't an active token!)
+
+```         
+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
+```
+
+Copy the token. You will not be able to go back and see it later. There is an icon beside it you can click on to copy.
+
+There needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
+
+```         
+GITHUB_TOKEN=<YOURTOKEN>
+```
+
+Update Your remote URL setting in the terminal with this token.
+
+```         
+git remote set-url origin https://<YOUR_USERNAME:<YOUR_TOKEN>@github.com/<YOUR_USERNAME>/<REPOSITY_NNAME>.git
+```
+
+Install the `dotenv` package. You may do this in R by selecting `Tools`, followed by `Install packages...` and then search for `dotenv` and click on `Install`. Once you have the `dotenv` package installed load the package library and identify which file contains the GitHub token with the following commands in R.
+
+```{r}
+library(dotenv)
+load_dot_env()
+github_token <- Sys.getenv("GITHUB_TOKEN")
+```
+
+your GitHub repository's webpage. You should be on the 'main' branch in GitHub so use the following command.
+
+```         
+git push origin main
+```
+
+If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.
 
 ## Configure your GitHub repository
 
@@ -118,6 +172,13 @@ Make certain that the name of the default branch is `main` in your GitHub `Pages
 
 ```         
 git config --global init.defaultBranch main
+```
+
+Add your user email and GitHub username to your GitHub configuration.
+
+```         
+git config --global user.email "youremail@gmail.com"
+git config --global user.name "yourusername"
 ```
 
 Verify that you are in the correct directory and check the status of your repository.
@@ -134,13 +195,6 @@ To add new files or other changes the files need to be staged. Remember to add t
 git add .
 ```
 
-Add your user email and GitHub username.
-
-```         
-git config --global user.email "youremail@gmail.com"
-git config --global user.name "yourusername"
-```
-
 Commit the staged changes and include a brief descriptive message. The first commit of data you may just call `Initial commit`. I sometimes use the date and time for descriptions of subsequent commits.
 
 ```         
@@ -149,65 +203,22 @@ git commit -m "Initial commit"
 
 After this commit you should see a list of files that were updated.
 
-Now set up a remote repository. First check if there is a remote repository set up.
+Now, you want to send or "push" these changes to the Github repository. First, check and make sure you have saved the right remote repository.
 
 ```         
 git remote -v
 ```
 
-If there is no output from this command then you need to set up the remote repository.
-
-## Authenticate your GitHub remote repository
-
-Once the files have been staged and commited you need to tell the program where to send your files. If you use the following code you will be asked for a username and password for your GitHub account. Remember throughout these instructions where you see `<USERNAME>` replace with your GitHub username and where you see `<REPOSITORY_NAME>` replace with the name you gave your GitHub repository.
+After
 
 ```         
-git remote set-url origin github.com/<USERNAME>/<REPOSITORY_NAME>.git
+git pull origin main
 ```
 
-However, despite getting prompts to enter a username and password, authenticating a remote repository on GitHub is no longer supported from command prompts in the terminal, so you will likely see the prompts but get an error message. Instead return to your GitHub account and create a token for your GitHub site.
-
-First, there needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
-
-```         
-GITHUB_TOKEN=<YOURTOKEN>
-```
-
-Install the `dotenv` package.
-
-```{r}
-library(dotenv)
-load_dot_env()
-github_token <- Sys.getenv("GITHUB_TOKEN")
-```
-
-```         
-Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
-Click Generate new token (classic)
-Give it a name (e.g., "Git CLI")
-Select these scopes:
-    repo (full control of private repositories)
-    workflow (if you use GitHub Actions)
-Click Generate token
-Copy the token immediately. You won't be able to see it again. The token will be a very long series of random characters like this. 
-
-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
-```
-
-Update Your Remote URL with the Token
-
-```         
-git remote set-url origin https://<YOUR_USERNAME:<YOUR_TOKEN>@github.com/<YOUR_USERNAME>/<REPOSITY_NNAME>.git
-```
-
-Now you are ready to push your files to your GitHub repository's webpage. You should be on the 'main' branch in GitHub so use the following command.
+Next
 
 ```         
 git push origin main
 ```
 
-If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.
-
-```{r}
-1 + 1
-```
+Next
