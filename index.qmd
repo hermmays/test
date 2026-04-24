@@ -4,7 +4,7 @@ title: "Test Quarto Website"
 
 # Introduction
 
-This is a tutorial for documenting research workflows using Quarto and RStudio. These protocols were developed in the context of systematic, biogeographic, and species delimitation studies using both morphometric and genetic data sets, but they could be employed for any research program, especially those that incorporate statistical analyses in R. We will perform a couple of analyses to illustrate some features of the documentation but this is not a tutorial on statistical analysis, rather it is an attempt to impart skills to document and share detailed workflows. The tutorial will assume some basic familiarity with statistical analysis and graphics in R.
+This is a tutorial for documenting research workflows using Quarto and RStudio. These protocols were developed in the context of systematic, biogeographic, and species delimitation studies using both morphometric and genetic data sets, but they could be employed for any research program, especially those that involve statistical analyses in R. We will perform a couple of analyses to illustrate some features of the documentation but this is not a tutorial on statistical analysis, rather it is an attempt to impart skills to document and share detailed workflows. The tutorial will assume some basic familiarity with statistical analysis and graphics in R.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
@@ -32,11 +32,11 @@ You should now have a dashboard with your user name and various options for cust
 
 ## Create a GitHub repository
 
-Select `Repositories` from the top menu on your dashboard on [github.com](https://github.com). This will take you to another page with a list of your repositories. You can create a single webpage for each repository in GitHub.
+Select `Repositories` from the top menu on your dashboard on [github.com](https://github.com). This will take you to another page with a list of your repositories. You can create a single webpage for each GitHub repository.
 
 Select the `New` button to create a new repository.
 
-Enter an informative name in the `Repository name *` field along with a brief description of the repository in the `Description` field.
+Enter an informative name in the `Repository name *` field along with a brief description in the `Description` field.
 
 Choose `Public` from the dropdown menu for the `Choose visibility *` option under `Configuration`.
 
@@ -98,7 +98,7 @@ This will create a `docs` folder with the rendered files created by Quarto which
 
 ## Create a written narrative
 
-This is the fun part. Be creative in generating the narrative of the workflow but most importantly be detailed in your instructions. The goal is that a reader should be able to follow your instructions and replicate your results exactly. There will be people with varying skill sets and experience reading your documentation, including sometimes students with very little background in computing or using a primarily command line interface.
+This is the fun part. Be creative in generating the narrative of the workflow but most importantly be detailed in your instructions. The goal is that a reader should be able to follow your instructions and replicate your results exactly. There will be people with varying skill sets and experience reading your documentation, including sometimes students with very little background in computing or using a primarily command line interface. Write your workflows with those people in mind.
 
 ## Render your results
 
@@ -136,16 +136,17 @@ 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
 
 Copy the token. You will not be able to go back and see it later. There is an icon beside it you can click on to copy.
 
-There needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a .env file that will be ignored along with other files listed in a .gitignore file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
+There needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a `.env` file that will be ignored along with other files listed in a `.gitignore` file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
 
 ```         
 GITHUB_TOKEN=<YOURTOKEN>
 ```
 
-Update Your remote URL setting in the terminal with this token.
+Update Your remote URL setting in the terminal with this token. Replace \<YOUR_USERNAME\> with the username for your GitHub account and \<YOUR_TOKEN\> with the security token created on the GitHub site and matching the token in the `.env` file.
 
 ```         
-git remote set-url origin https://<YOUR_USERNAME:<YOUR_TOKEN>@github.com/<YOUR_USERNAME>/<REPOSITY_NNAME>.git
+git remote set-url origin https://<YOUR_USERNAME>:<YOUR_TOKEN>@github.com/
+<YOUR_USERNAME>/<REPOSITY_NNAME>.git
 ```
 
 Install the `dotenv` package. You may do this in R by selecting `Tools`, followed by `Install packages...` and then search for `dotenv` and click on `Install`. Once you have the `dotenv` package installed load the package library and identify which file contains the GitHub token with the following commands in R.
@@ -155,14 +156,6 @@ library(dotenv)
 load_dot_env()
 github_token <- Sys.getenv("GITHUB_TOKEN")
 ```
-
-your GitHub repository's webpage. You should be on the 'main' branch in GitHub so use the following command.
-
-```         
-git push origin main
-```
-
-If there is an error you can force the changes to GitHub with the following command but be aware this will overwrite the remote changes and replace them with your local changes. This is usually OK if you are the only user working on the GitHub page.
 
 ## Configure your GitHub repository
 
@@ -209,16 +202,22 @@ Now, you want to send or "push" these changes to the Github repository. First, c
 git remote -v
 ```
 
-After
+After confirming your remote repository conduct a pull from the repository to sync any changes that may exist on the repository that have not been saved locally. This is often unnecessary if you are the sole agent pushing changes to the repository but it is a good habit regardless.
 
 ```         
 git pull origin main
 ```
 
-Next
+Next push your local changes to the GitHub repository. Make sure the location is `main`.
 
 ```         
 git push origin main
 ```
 
-Next
+# Render as a pdf
+
+There are many benefits to distributing your workflows and data analyses through an html site including interactivity and ease in copying code. You may readily link html sites in the supplementary data accompanying a manuscript, or in the manuscript itself. However, html sites need to be hosted somewhere, like GitHub, and while these resources are farily accessible, an author may prefer to share protocols, workflows, and data analyses in ways that do not require web hosting. Rendering a Quarto file as a pdf is an option in this case.
+
+```         
+quarto render <YOUR _FILE_NAME>.qmd --to pdf
+```
