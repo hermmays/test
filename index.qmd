@@ -360,7 +360,7 @@ The map will now appear in your rendered html page or a rendered pdf.
 
 ### Example: Principle component analysis of morphometric data and interactive output
 
-One major benefit of rendering your workflow as an html page rather than simply a pdf is that the webpage format is interactive. Users can easily click the copy icon on a code block to copy code, move three dimensional plots around all axes, and manipulate other interactive graphics. Of course the drawback is that an html webpage needs to stable place to be hosted and is therefore not quite as portable as a pdf, but why not both! Hosting a workflow at GitHub is relatively easy and rendering your work as a webpage does not preclude you from also rendering as a pdf.
+One major benefit of rendering your workflow as an html page rather than simply a pdf is that the webpage format is interactive. Users can easily click the copy icon on a code block to copy code, scroll within a block if there are long lines of code, and move three dimensional plots other interactive graphics. Of course the drawback is that an html webpage needs to stable place to be hosted and is therefore not quite as portable as a pdf, but why not both! Hosting a workflow at GitHub is relatively easy and rendering your work as a webpage does not preclude you from also rendering as a pdf.
 
 For this example we will take linear morphometrics from our Asian White-eyes and conduct a principle components analysis (PCA) and display the first three principle components as a 3D interactive figure.
 
@@ -588,4 +588,16 @@ There are many benefits to distributing your workflows and data analyses through
 
 ```         
 quarto render <YOUR _FILE_NAME>.qmd --to pdf
+```
+
+That command will work so long as your rendered Quarto document does not contain any complex html graphics and for this example we do have those graphics so this does not really work.
+
+But there is an easy solution! Install the R package `webshot2` and load the package library. Your Quarto webpage is set up to render your document as an html file to be displayed on a browser. For each Quarto file (qmd) you create there will be a separate html file. Once the `webshot2` library is loaded you may use this package to convert that rendered html file into a pdf. It will take snapshots of html graphics to include in the pdf. Again, pdfs are simple to share over email or even as printed copies, they are not however interactive, so you will lose that feature of the html approach. But, it is good to have a pdf version of your workflow in addition to a webpage. If you wish your final product to be a pdf instead of a webpage you may set Quarto up in the beginning to render your documents as pdfs, just avoid using any complex, interactive graphics or html files and avoid long lines of code in your blocks as the reader will no longer be able to scroll left and right in a block in a pdf as they would in a webpage.
+
+To convert your html file to a pdf using `webshot2`, execute the following commands in R. In the html version of your work this will even create a scrollable preview of the pdf embedded in the webpage.
+
+```{r}
+#| label: Use webshot2 to convert the rendered html file to a pdf
+library(webshot2)
+webshot2::webshot(url = "docs/index.html", file = "docs/index.pdf")
 ```
