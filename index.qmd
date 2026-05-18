@@ -1,6 +1,7 @@
 ---
 title: "Test Quarto Website"
 bibliography: QuartoTutorial.bib
+knitr: true
 ---
 
 # Introduction
@@ -11,17 +12,17 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
 # Outline
 
--   Create a GitHub repository.
+- Create a GitHub repository.
 
--   Create a new R project and Quarto website within R studio.
+- Create a new R project and Quarto website within R studio.
 
--   Create an R environment.
+- Create an R environment.
 
--   Edit the Quarto website settings to create pages documenting your workflows
+- Edit the Quarto website settings to create pages documenting your workflows
 
--   Include narrative, textual information and interactive code.
+- Include narrative, textual information and interactive code.
 
--   Upload to GitHub repository.
+- Upload to GitHub repository.
 
 # Create a GitHub repository
 
@@ -43,7 +44,7 @@ Choose `Public` from the dropdown menu for the `Choose visibility *` option unde
 
 Click the toggle to `On` in the `Add README` option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the `Description` field.
 
-Leave the `Add .gitignore` and `Add license` field to the default settings.
+Leave the `Add .gitignore` and `Add license` fields to the default settings.
 
 Click the `Create repository` button.
 
@@ -131,27 +132,29 @@ First, install the packages needed for the analysis. This may be done as a comma
 
 In your description of the analysis, list the needed packages. For this example we will use the following packages.
 
--   ggplot2 [@ggplot2]
+- ggplot2 [@ggplot2]
 
--   maps [@maps]
+- maps [@maps]
 
--   sf [@sf]
+- sf [@sf]
 
 #### Citations and bibliography
 
-Quarto allows the user an easy way to insert citations, especially for R packages. With the cursor in the place you wish to insert a citation, choose from the `Insert` menu on the menu at the top of the tab, and select `Citation...`. Also, in the citation window at the bottom you may change the name of the bibliography file (`.bib`) in the `Create` field. The citation feature of Quarto is not only useful for citing R packages but may be used to cite any published material from the scientific literature. For other sorts of citations references may be found by selecting `From DOI` or `PubMed` in the citation window. Adding citations will create a bibliography of all the references that will appear at the end of the rendered document.
+Quarto allows the user an easy way to insert citations, especially for R packages. The box at the top of your Quarto document allows for document specific formatting options. If you have multiple pages and therefore multiple Quarto files within a single webpage, most of these settings will be established globally in the `_quarto.yml` file (`.yml` files are called "*yaml*" file) so there typically will not be much at the top of each Quarto page. The `_quarto.yml` file should be visible as a tab in RStudio. However, for each page you will need to assign a bibliography file (`.bib`). Remember the bibliographies for each of your pages should have their own unique `.bib` file.
 
-Next have a data section that describes the data used in the analysis, highlights any particular facets of that dataset that could be confusing, defines any abbreviations relevant to reading the dataset, and alerts the reader to the file name and the location of that file. Also, it may be useful to create a blank code block and paste the raw data into that code block so that the reader may view those data easily without accessing the file itself.
+Once you have assigned a page a unique `.bib` file you may start adding citations to the text. With the cursor in the place you wish to insert a citation, choose from the `Insert` menu on the menu at the top of the tab, and select `Citation...`. The citation feature of Quarto is not only useful for citing R packages but may be used to cite any published material from the scientific literature. For other sorts of citations references may be found by selecting `From DOI` or `PubMed` in the citation window. Adding citations will populate your bibliography file (`.bib`) and create a references section at the end of the rendered document. Sometimes references are not created in this file exactly as you might want them to appear. If this is the case you can edit the `.bib` file manually by opening in a text editor and making the needed changes.
 
 #### Data files
 
+Next have a data section that describes the data used in the analysis, highlights any particular facets of that dataset that could be confusing, defines any abbreviations relevant to reading the dataset, and alerts the reader to the file name and the location of that file. Also, it may be useful to create a blank code block and paste the raw data into that code block so that the reader may view those data easily without accessing the file itself.
+
 List the files needed for the analyses. This sample analysis requires the following data file.
 
--   `ZosteropsPOPS4_LatLong.txt` A text file of individual samples included in the SNP dataset matched with taxon, locale, and latitude and longitude.
+- `ZosteropsPOPS4_LatLong.txt` A text file of individual samples included in the SNP dataset matched with taxon, locale, and latitude and longitude.
 
 Describe the data in detail so that it makes sense to the reader. For this example we have data from Asian white-eyes (*Zosterops spp.*). The population file lists the individual sample IDs, taxon designations, the name of the sampling locales (designated by island or province), and latitude and longitude will be used to generate a sampling map. To reduce the amount of clutter on the maps subspecies were clustered together in shared geographic groups. *Zosterops japonicus* subspecies were designated as either *Z. japonicus alani* for the most remote subspecies in the Ogasawara and Volcano Islands or grouped within a single *Z. japonicus* designation for all the remaining subspecies. Subspecies for *Z. montanus* were clustered into three groups including a Palawan group (montanus PALAWAN) consisting of *Z. montanus parkesi*, a northern Philippine group (montanus NORTH) for those subspecies on Mindoro and Luzon (*Z. montanus halconensis* amd *Z. montanus whiteheadi*), and a southern Philippine group (montanus SOUTH) including the remaining *Z. montanus* subspecies included in the study (*Z. montanus diuatae*, *Z. montanus montanus*, *Z. montanus pectoralis*, *Z. montanus vulcani*, and an unnamed but suggested subspecies on Panay). Subspecies within the *Z. everetti* and *Z. nigrorum* species were lumped together under a single species designation for each in the sampling maps but distinguished in later analyses. Samples from introduced populations in Hawaii and California are included in this list, but they are excluded from the final figure.
 
-It is often helpful to show the data within the documentation. To do this select `Insert` and then `Code Block...` from the source pane menu. Do not enter anything for the `Language` field and this will create a blank code block. You can paste your data into this code block. For many datasets this is impractical because the files are too large. This is fine. You may just substitute displaying the data with a detailed description or only display the partial data to give the reader an idea of what is in the data file. If you do the latter then make it clear to the reader that this is just a partial list. For our example, individual samples and their accompanying data from the file `ZosteropsPOPS4_LatLong.txt` are listed below. All of the samples listed in this file appear in the single nucleotide polymorphism (SNP) analyses.
+It is often helpful to show the data within the documentation. To do this select `Insert` and then `Code Block...` from the source pane menu. Do not enter anything for the `Language` field and this will create a blank block. You can paste your data into this block. For many datasets this is impractical because the files are too large. This is fine. You may just substitute displaying the data with a detailed description or only display the partial data to give the reader an idea of what is in the data file. If you do the latter then make it clear to the reader that this is just a partial list. For our example, individual samples and their accompanying data from the file `ZosteropsPOPS4_LatLong.txt` are listed below. All of the samples listed in this file appear in the single nucleotide polymorphism (SNP) analyses.
 
 ```         
 SAMPLE  TAXON   LOCALE  LAT LONG
@@ -283,7 +286,7 @@ Z_HI_SOL783 japonicus   HAWAII  19.5660 -155.4530
 
 #### Analyses
 
-Before starting your analyses, you will need to load the package libraries (make sure those packages are installed first). Remember to add a unique label (`#| label:`) at the top of each block of code (see **Create an R environment**).
+Before starting your analyses, you will need to load the package libraries (make sure those packages are installed first). Remember to add a unique label (`#| label:`) at the top of each block of code (see **Create an R environment**). This may help with any troubleshooting downstream.
 
 ```{r}
 #| label: Load package libraries
@@ -366,7 +369,7 @@ For this example we will take linear morphometrics from our Asian White-eyes and
 
 #### General methods summary
 
-Often it is good to start a particular analysis with a summary of the methodology. If you do this as you go along then once you are ready to write up your results in a manuscript the methods section will write itself. Remember to be detailed. You have a little more freedom in supplemental material. You can add more detailed descriptions compared to the methods section of a published paper. Here is an example outlining the methodology behind the Asian White-eye morphometrics example we will perform next.
+Often it is good to start a particular analysis with a summary of the methodology. If you do this as you go along then once you are ready to write up your results for publication the methods section will be mostly completed already. Remember to be detailed. You have a little more freedom in supplemental material. You can create more detailed descriptions here compared to the methods section of a published paper. Here is an example outlining the methodology behind the Asian White-eye morphometrics example we will perform next.
 
 Linear morphometric data including culmen length, nares-to-tip bill length, bill depth, bill width, tarsus length, wing cord, and tail length were collected from 388 round museum skins for all the Zosterops taxa in this study from the American Museum of Natural History (New York, NY, USA), Cincinnati Museum Center (Cincinnati, OH, USA), The Field Museum (Chicago, IL, USA), and the Smithsonian National Museum of Natural History (Washington DC, USA). All measurements were recorded by the same researcher (HLM) in mm using either digital calipers or a wing rule. Culmen length was measured as exposed culmen from the tip of the bill to the point where the bill meets the forehead plumage. Bill length from nares-to-tip was measured from the distal end of the right nare to the tip of the bill. Bill depth and width were measured at the nares. Tarsus (tarsometatarsus) length was measured from the base of the phalanges to the tibiotarsal joint. Wing cord was measured unflattened with a wing rule. Tail length was measured from the body to the tip of the longest rectrix by placing the same wing rule in the center of the tail. Skins where poor condition or positioning prevented accurate measurements for one or more traits were excluded from analysis making the final analyzed dataset 354 individual specimens. A PCA was conducted using the `prcomp` function and plotted for PC1-2 and for PC1-3 using *plotly* in R with specimens grouped solely according to species.
 
@@ -374,11 +377,11 @@ Linear morphometric data including culmen length, nares-to-tip bill length, bill
 
 We will need the following additional packages. Remember when starting a new analysis provide the reader with a list of packages they will need and do not forget the citations.
 
--   plotly [@plotly]
+- plotly [@plotly]
 
--   dplyr [@dplyr]
+- dplyr [@dplyr]
 
--   htmlwidgets [@htmlwidgets]
+- htmlwidgets [@htmlwidgets]
 
 First we will load our packages. We will need to install the `plotly` and `htmlwidgets` packages. The `ggplot2` package is already installed and its library loaded as part of the previous analysis.
 
@@ -467,6 +470,14 @@ PC3Dplot
 ```
 
 Notice that the user may now interact with the graphic and move it around all three axes to view the data from different vantage points.
+
+## Adding a date/time stamp
+
+You can add a date and time stamp to your `.qmd` files so that a reader may know the last update for that page. To set this up you need to include `knitr: true` in the front matter at the top of the `.qmd` file. In the editor in RStudio select the `Source` option as opposed to the `Visual` option and enter the following at the end of the document, or wherever you want the time/date stamp to appear.
+
+```         
+*Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*
+```
 
 ## Render your results
 
@@ -582,6 +593,20 @@ Next push your local changes to the GitHub repository. Make sure the location is
 git push origin main
 ```
 
+Note that the more explicit commands `git pull origin main` and `git push origin main` are probably more than you need. Unless you have your GitHub site set up to use multiple branches or remotes then simply `git pull` and `git push` are sufficient.
+
+If your site is especially large and complex with multiple quarto files sometimes it may be better to push the changes for individual pages one at a time. Render the page from RStudio and instead of adding, commiting, and pushing everything all at once as described above do so individually for that single page. This requires staging the changes for the quarto file (`.qmd`), the html file (`.html`), and the directory created to store any additional files created during the render using the add command. For example, for the quarto file `ZosteropsMaps.qmd` first save your changes and render in RStudio using the `Render` button on the top menu. Once the Quarto file has been rendered and completed files saved in the `docs` folder add, commit, and push the changes to GitHub with the following commands (remember here we are using the `ZosteropsMaps.qmd` page as an example). Notice when updating an entire directory as opposed to an individual file you need to use quotes.
+
+```         
+git add ZosteropsMaps.qmd
+git add docs/ZosteropsMaps.html
+git add "docs/ZosteropsMaps_files"
+git commit -m "ZosteropsMaps update today's date"
+git push
+```
+
+If the Quarto website is set up correctly you should always be rendering to a `docs` folder. For whatever reason sometimes this directory can get cluttered with duplicate files. You may start seeing files in that directory with numbered suffixes (e.g., `ZosteropsMaps_files2` and `ZosteropsMaps_files3`, etc.). If this happens you may manually delete all the files from the docs folder and conduct a fresh render on a clean directory. However, leave the file `.nojekyll` in this directory. This is a hidden, blank text file used in formatting your webpage. If you accidentally delete it then you can reconstitute it by creating a blank text file and saving it as `.nojekyll`. This is a hidden file in the directory (hence the `.` at the beginning of the file name) so normally you will not see it unless you explicitly tell your computer to display hidden files (`Command + Shift + Period` in Mac OSX).
+
 # Render as a pdf
 
 There are many benefits to distributing your workflows and data analyses through an html site including interactivity and ease in copying code. You may readily link html sites in the supplementary data accompanying a manuscript, or in the manuscript itself. However, html sites need to be hosted somewhere, like GitHub, and while these resources are fairly accessible, an author may prefer to share protocols, workflows, and data analyses in ways that do not require web hosting. Rendering a Quarto file as a pdf is an option in this case.
@@ -598,6 +623,10 @@ To convert your html file to a pdf using `webshot2`, execute the following comma
 
 ```{r}
 #| label: Use webshot2 to convert the rendered html file to a pdf
+#| out-width: "100%"
+#| out-height: "900px"
 library(webshot2)
 webshot2::webshot(url = "docs/index.html", file = "docs/index.pdf")
 ```
+
+*Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*
