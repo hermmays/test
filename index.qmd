@@ -1,5 +1,7 @@
 ---
 title: "Test Quarto Website"
+format:
+  html: default
 bibliography: QuartoTutorial.bib
 knitr: true
 ---
@@ -422,7 +424,8 @@ Now group specimens by species and select the variables we wish to analyze.
 #| label: Group specimens by species for morphometric analysis
 # Group data by 'species' and select relevant variables for PCA
 ZosteropsMorph_species <- ZosteropsMorph %>% 
-  select(Species, BillCulmen, BillNareTip, BillDepth, BillWidth, Tarsus, Wing, Tail) %>%
+  select(Species, BillCulmen, BillNareTip, BillDepth, BillWidth, Tarsus, 
+         Wing, Tail) %>%
   group_by(Species)
 ```
 
@@ -433,7 +436,8 @@ Run the PCA using the `prcomp` function and save as a data frame called `pca_dat
 ```{r}
 #| label: Run the PCA on the morphometric data
 # Perform PCA on the selected variables
-pca_result <- prcomp(ZosteropsMorph_species[, -1], center = TRUE, scale. = TRUE)
+pca_result <- prcomp(ZosteropsMorph_species[, -1], center = TRUE, 
+                     scale. = TRUE)
 
 # Convert PCA result to a data frame for plotting
 pca_data <- as.data.frame(pca_result$x)
@@ -446,8 +450,11 @@ Now plot the first two principle components.
 
 ```{r}
 #| label: Plot the first two PCs
+#| fig-width: 10
+#| fig-height: 5.0
 # Plot the first two principal components
-ColorPal_CUSTOM <- c("#004949", "#DB6D00", "#D82632", "#FED439", "#FA9C88", "#924900", "#8DB6CD", "#008600")
+ColorPal_CUSTOM <- c("#004949", "#DB6D00", "#D82632", "#FED439", "#FA9C88", 
+                     "#924900", "#8DB6CD", "#008600")
 # Create the 2D scatter plot for PC1 and PC2 with outlines
 PC2Dplot <- plot_ly(
   x = pca_data$PC1, 
@@ -471,8 +478,11 @@ Now here is where things get interactive. Let's create a three dimensional graph
 
 ```{r}
 #| label: Plot the first three PCs in an interactive graphic
+#| fig-width: 6.5
+#| fig-height: 5.0
 # Plot the first three principal components
-PC3Dplot <- plot_ly(x = pca_data$PC1, y = pca_data$PC2, z = pca_data$PC3, type = "scatter3d", mode = 'markers', 
+PC3Dplot <- plot_ly(x = pca_data$PC1, y = pca_data$PC2, z = pca_data$PC3, 
+                    type = "scatter3d", mode = 'markers', 
         marker = list(size = 14, line = list(color = 'black', width = 1)),
         color = pca_data$Species, 
         colors = ColorPal_CUSTOM) %>%
@@ -635,11 +645,7 @@ To convert your html file to a pdf using `webshot2`, execute the following comma
 
 ```{r}
 #| label: Render a pdf
-#| out-width: "100%"
-#| out-height: "900px"
-
-#library(webshot2)
-#webshot2::webshot(url = "docs/index.html", file = "docs/index.pdf")
+#library(webshot2) webshot2::webshot(url = "https://hermmays.github.io/test/",                    file = "docs/index.pdf")
 ```
 
 *Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*
