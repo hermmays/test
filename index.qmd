@@ -634,11 +634,12 @@ But there is an easy solution! Install the R package `webshot2` and load the pac
 To convert your html file to a pdf using `webshot2`, execute the following commands in R. In the html version of your work this will even create a scrollable preview of the pdf embedded in the webpage.
 
 ```{r}
-#| label: Use webshot2 to convert the rendered html file to a pdf
+#| label: Render a pdf
 #| out-width: "100%"
 #| out-height: "900px"
-library(webshot2)
-webshot2::webshot(url = "docs/index.html", file = "docs/index.pdf")
+
+#library(webshot2)
+#webshot2::webshot(url = "docs/index.html", file = "docs/index.pdf")
 ```
 
 *Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*

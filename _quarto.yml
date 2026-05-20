@@ -16,4 +16,5 @@ format:
     toc: true
 
 editor: visual
+post-render: generate_pdf.R
 
