@@ -645,7 +645,9 @@ To convert your html file to a pdf using `webshot2`, execute the following comma
 
 ```{r}
 #| label: Render a pdf
-#library(webshot2) webshot2::webshot(url = "https://hermmays.github.io/test/",                    file = "docs/index.pdf")
+library(webshot2) 
+webshot2::webshot(url = "https://hermmays.github.io/test/", 
+                  file = "docs/index.pdf")
 ```
 
 *Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*
