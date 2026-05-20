@@ -624,10 +624,11 @@ git add ZosteropsMaps.qmd
 git add docs/ZosteropsMaps.html
 git add "docs/ZosteropsMaps_files"
 git commit -m "ZosteropsMaps update today's date"
+git pull
 git push
 ```
 
-If the Quarto website is set up correctly you should always be rendering to a `docs` folder. For whatever reason sometimes this directory can get cluttered with duplicate files. You may start seeing files in that directory with numbered suffixes (e.g., `ZosteropsMaps_files2` and `ZosteropsMaps_files3`, etc.). If this happens you may manually delete all the files from the docs folder and conduct a fresh render on a clean directory. However, leave the file `.nojekyll` in this directory. This is a hidden, blank text file used in formatting your webpage. If you accidentally delete it then you can reconstitute it by creating a blank text file and saving it as `.nojekyll`. This is a hidden file in the directory (hence the `.` at the beginning of the file name) so normally you will not see it unless you explicitly tell your computer to display hidden files (`Command + Shift + Period` in Mac OSX).
+If the Quarto website is set up correctly you should always be rendering to a `docs` folder. For whatever reason sometimes this directory can get cluttered with duplicate files. You may start seeing files in that directory with numbered suffixes (e.g., `ZosteropsMaps_files2` and `ZosteropsMaps_files3`, etc.). If this happens you may manually delete all the files from the docs folder and conduct a fresh render on a clean directory. However, leave the file `.nojekyll` in this directory. This is a hidden, blank text file used in formatting your webpage. If you accidentally delete it then you can reconstitute it by creating a blank text file and saving it as `.nojekyll`. This is a hidden file in the directory (hence the `.` at the beginning of the file name) so normally you will not see it unless you explicitly tell your computer to display hidden files (`Command + Shift + Period` in Mac OSX). It is probably a better idea to create the `.nojekyll` in the GitHub dashboard and saving it to the `docs` directory. If you do this then be sure you use `git pull origin main` to grab that `.nojekyll` file from GitHub to sync with the current render.
 
 # Render as a pdf
 
@@ -637,11 +638,11 @@ There are many benefits to distributing your workflows and data analyses through
 quarto render <YOUR _FILE_NAME>.qmd --to pdf
 ```
 
-That command will work so long as your rendered Quarto document does not contain any complex html graphics and for this example we do have those graphics so this does not really work.
+That command will work so long as your rendered Quarto document does not contain any complex html graphics and for this example we do have those graphics so this does not really work. Plus doing this could replace your rendered html files in the `docs` folder.
 
-But there is an easy solution! Install the R package `webshot2` and load the package library. Your Quarto webpage is set up to render your document as an html file to be displayed on a browser. For each Quarto file (qmd) you create there will be a separate html file. Once the `webshot2` library is loaded you may use this package to convert that rendered html file into a pdf. It will take snapshots of html graphics to include in the pdf. Again, pdfs are simple to share over email or even as printed copies, they are not however interactive, so you will lose that feature of the html approach. But, it is good to have a pdf version of your workflow in addition to a webpage. If you wish your final product to be a pdf instead of a webpage you may set Quarto up in the beginning to render your documents as pdfs, just avoid using any complex, interactive graphics or html files and avoid long lines of code in your blocks as the reader will no longer be able to scroll left and right in a block in a pdf as they would in a webpage.
+But there is an easy solution! Install the R package `webshot2` and load the package library. Your Quarto webpage is set up to render your document as an html file to be displayed on a browser. For each Quarto file (.`qmd`) you create there will be a separate html file. Once the `webshot2` library is loaded you may use this package to convert that rendered html file into a pdf. It will take snapshots of html graphics to include in the pdf. Again, pdfs are simple to share over email or even as printed copies, they are not however interactive, so you will lose that feature of the html approach. But, it is good to have a pdf version of your workflow in addition to a webpage. If you wish your final product to be a pdf instead of a webpage you may set Quarto up in the beginning to render your documents as pdfs, just avoid using any complex, interactive graphics or html files and avoid long lines of code in your blocks as the reader will no longer be able to scroll left and right in a block in a pdf as they would in a webpage.
 
-To convert your html file to a pdf using `webshot2`, execute the following commands in R. In the html version of your work this will even create a scrollable preview of the pdf embedded in the webpage.
+To convert your html file to a pdf using `webshot2`, execute the following commands in R. The best way to do this that causes the fewest conflicts is to allow `webshot2` to grab the html from your rendered webpage url rather than from the local html file and save the pdf in your docs folder.
 
 ```{r}
 #| label: Render a pdf
