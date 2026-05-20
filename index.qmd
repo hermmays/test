@@ -649,8 +649,8 @@ To convert your html file to a pdf using `webshot2`, execute the following comma
 
 ```{r}
 #| label: Render a pdf
-#| fig-height: 10.5
-#| fig-width: 6.5
+#| out-width: "100%"
+#| out-height: "900px"
 library(webshot2) 
 webshot2::webshot(url = "https://hermmays.github.io/test/", 
                   file = "docs/index.pdf")
