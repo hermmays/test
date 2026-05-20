@@ -44,7 +44,20 @@ Choose `Public` from the dropdown menu for the `Choose visibility *` option unde
 
 Click the toggle to `On` in the `Add README` option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the `Description` field.
 
-Leave the `Add .gitignore` and `Add license` fields to the default settings.
+The `No .gitignore` left as is will result in no `.gitignore` file being created. `.gitignore` is a text file in the directory that tells GitHub which file not to sync with the repository. This will be important later so you do want a `.gitignore` file in your home directory. You can create this file yourself later or allow GitHub to add it to the repository from a template. A long list of templates appear in the drop down menu. The best of these given we are working in RStudio and using primarily R for the analyses would be the R template. You can edit this file in the GitHub dashboard later to suit your project. For our purposes the `.gitignore` file should include these file names, with potentially more added later as needed. Note the `.env` file. This will be important later.
+
+```         
+.env
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+.positai
+```
+
+For the `Add license` selection typically Creative Commons Zero v1.0 or some similar license allowing broad free public use is the best choice for most academic research. Often these open Creative Commons licenses are required for publicly funded research.
 
 Click the `Create repository` button.
 
@@ -515,7 +528,7 @@ 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
 
 Copy the token you have created on GitHub. You will not be able to go back and see it later. There is an icon beside it you can click on to copy.
 
-There needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a `.env` file that will be ignored along with other files listed in a `.gitignore` file. Create a txt file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
+There needs to be a secure place to store the token. We need to keep this token secret else errors will pop up when trying to push data to the GitHub site later so we will save the token in a `.env` file that will be ignored along with other files listed in a `.gitignore` file. Create a `txt` file in your text editor. The only contents of that file should be as follows, replacing \<YOURTOKEN\> with the token created on the GitHub site.
 
 ```         
 GITHUB_TOKEN=<YOURTOKEN>
@@ -524,8 +537,7 @@ GITHUB_TOKEN=<YOURTOKEN>
 Update Your remote URL setting in the terminal with this token. Replace \<YOUR_USERNAME\> with the username for your GitHub account and \<YOUR_TOKEN\> with the security token created on the GitHub site and matching the token in the `.env` file.
 
 ```         
-git remote set-url origin https://<YOUR_USERNAME>:<YOUR_TOKEN>@github.com/
-<YOUR_USERNAME>/<REPOSITY_NNAME>.git
+git remote set-url origin https://<YOUR_USERNAME>:<YOUR_TOKEN>@github.com/<YOUR_USERNAME>/<REPOSITY_NNAME>.git
 ```
 
 Install the `dotenv` package. You may do this in R by selecting `Tools`, followed by `Install packages...` and then search for `dotenv` and click on `Install`. Once you have the `dotenv` package installed load the package library and identify which file contains the GitHub token with the following commands in R.
