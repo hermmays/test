@@ -553,6 +553,9 @@ git remote set-url origin https://<YOUR_USERNAME>:<YOUR_TOKEN>@github.com/<YOUR_
 Install the `dotenv` package. You may do this in R by selecting `Tools`, followed by `Install packages...` and then search for `dotenv` and click on `Install`. Once you have the `dotenv` package installed load the package library and identify which file contains the GitHub token with the following commands in R.
 
 ```{r}
+#| label: Create pdf from the rendered html webpage
+#| fig-height: 10.5
+#| fig-width: 6.5
 library(dotenv)
 load_dot_env()
 github_token <- Sys.getenv("GITHUB_TOKEN")
