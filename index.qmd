@@ -50,10 +50,12 @@ The `No .gitignore` left as is will result in no `.gitignore` file being created
 
 ```         
 .env
+.Rprofile
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 
 /.quarto/
 .positai
