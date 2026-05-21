@@ -46,7 +46,7 @@
     "href": "index.html#adding-a-datetime-stamp",
     "title": "Quarto website tutorial",
     "section": "Adding a date/time stamp",
-    "text": "Adding a date/time stamp\nYou can add a date and time stamp to your .qmd files so that a reader may know the last update for that page. To set this up you need to include knitr: true in the front matter at the top of the .qmd file. In the editor in RStudio select the Source option as opposed to the Visual option and enter the following at the end of the document, or wherever you want the time/date stamp to appear.\n*Last updated: r format(Sys.time(), '%B %d, %Y %H:%M')*\nThe time stamp will then appear as follows on your webpage with each rendering of the site.\n*Last updated: May 21, 2026 08:53*"
+    "text": "Adding a date/time stamp\nYou can add a date and time stamp to your .qmd files so that a reader may know the last update for that page. To set this up you need to include knitr: true in the front matter at the top of the .qmd file. In the editor in RStudio select the Source option as opposed to the Visual option and enter the following at the end of the document, or wherever you want the time/date stamp to appear.\n*Last updated: r format(Sys.time(), '%B %d, %Y %H:%M')*\nThe time stamp will then appear as follows on your webpage with each rendering of the site.\n*Last updated: May 21, 2026 09:08*"
   },
   {
     "objectID": "index.html#render-your-results",
