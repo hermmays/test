@@ -500,13 +500,13 @@ Notice that the user may now interact with the graphic and move it around all th
 
 You can add a date and time stamp to your `.qmd` files so that a reader may know the last update for that page. To set this up you need to include `knitr: true` in the front matter at the top of the `.qmd` file. In the editor in RStudio select the `Source` option as opposed to the `Visual` option and enter the following at the end of the document, or wherever you want the time/date stamp to appear.
 
-`*Last updated: r format(Sys.time(), '%B %d, %Y %H:%M')*`
-
-The time stamp will then appear as follows on your webpage with each rendering of the site.
-
 ```         
 *Last updated: `r format(Sys.time(), '%B %d, %Y %H:%M')`*
 ```
+
+The time stamp will then appear something like this on your webpage with each rendering of the site.
+
+*Last updated: June 13, 2026 15:12*
 
 ## Render your results
 
