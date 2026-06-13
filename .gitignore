@@ -1,10 +1,15 @@
+renv/library/
+renv/local/
+renv/staging/
+*_cache/
 .env
-.DS_Store
+.RDataTmp
 .Rprofile
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 
 /.quarto/
 .positai

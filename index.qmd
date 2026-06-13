@@ -46,10 +46,16 @@ Choose `Public` from the dropdown menu for the `Choose visibility *` option unde
 
 Click the toggle to `On` in the `Add README` option to generate an informative description of the repository. This should be a longer more detailed description than what is entered in the `Description` field.
 
-The `No .gitignore` left as is will result in no `.gitignore` file being created. `.gitignore` is a text file in the directory that tells GitHub which file not to sync with the repository. This will be important later so you do want a `.gitignore` file in your home directory. You can create this file yourself later or allow GitHub to add it to the repository from a template. A long list of templates appear in the drop down menu. The best of these given we are working in RStudio and using primarily R for the analyses would be the R template. You can edit this file in the GitHub dashboard later to suit your project. For our purposes the `.gitignore` file should include these file names, with potentially more added later as needed. Note the `.env` file. This will be important later.
+The `No .gitignore` left as is will result in no `.gitignore` file being created. `.gitignore` is a text file in the directory that tells GitHub which file not to sync with the repository. This will be important later so you do want a `.gitignore` file in your home directory. You can create this file yourself later or allow GitHub to add it to the repository from a template. A long list of templates are available at [GitHub](https://github.com/github/gitignore). The best of these given we are working in RStudio and using primarily R for the analyses would be the R template. However, there are some edits that would be wise for this `.gitignore` template. You can edit this file in the GitHub dashboard to suit your project. Below is an example of a good `.gitignore` file for a project such as this. Note that in most cases you will not want to sync large files to the GitHub repository. These would include any large data sets such as next-generation sequence data or large image files. In your local directory keep all those big data files in a `data/` folder in your home directory. Data will be shared publicly through other repositories such as [NCBI](https://www.ncbi.nlm.nih.gov/), [Dryad](https://datadryad.org/), or [Zenodo](https://zenodo.org/) once the work is published. Ignore any files in folders titled `data/` by adding that directory name to the `.gitignore` file. Cache directories are often created in Quarto to store the results of computationally intensive code chunks so that those operations will not have to be rerun with each new render of a page. Those data are reproducible from the Quarto (`.qmd`) files and you typically do not need to hang on to them so it pays to include the cache in the `.gitignore` list. Note the `.env` file. This will be important later.
 
 ```         
+data/
+renv/library/
+renv/local/
+renv/staging/
+*_cache/
 .env
+.RDataTmp
 .Rprofile
 .Rproj.user
 .Rhistory
